@@ -18,18 +18,18 @@ describe('promises', () => {
       expect(typeof promisify(fastCallbackFn)).toBe('function');
     });
 
-    xtest('promisified function call returns a Promise', () => {
+    test('promisified function call returns a Promise', () => {
       const fastPromise = promisify(fastCallbackFn);
       expect(fastPromise('fast')).toBeInstanceOf(Promise);
     });
 
-    xtest("promisified function resolves to a callback's success value", () => {
+    test("promisified function resolves to a callback's success value", () => {
       const SUCCESS = 'success';
       const fastPromise = promisify(fastCallbackFn);
       return expect(fastPromise(SUCCESS)).resolves.toEqual(SUCCESS);
     });
 
-    xtest("promisified function rejects a callback's error", () => {
+    test("promisified function rejects a callback's error", () => {
       const failedPromise = promisify(failedCallbackFn);
       return expect(failedPromise(null)).rejects.toEqual(failedCallback);
     });

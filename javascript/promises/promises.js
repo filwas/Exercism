@@ -3,8 +3,15 @@
 // convenience to get you started writing code faster.
 //
 
-export const promisify = () => {
-  throw new Error('Remove this statement and implement this function');
+
+
+export const promisify = func => (...args) => {
+  return new Promise((resolve, reject) => {
+    func(...args, (error, value) => {
+      if (error) return reject(error);
+      else return resolve(value)
+    });
+  })
 };
 
 export const all = () => {

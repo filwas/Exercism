@@ -39,14 +39,14 @@ function runTestsExpectingChain(dominoes) {
   });
 
   if (dominoes.length > 0) {
-    xit('For the dominoes on the ends (a, b) ... (c, d): a is equal to d.', () => {
+    it('For the dominoes on the ends (a, b) ... (c, d): a is equal to d.', () => {
       expect(result[0][0] === result[result.length - 1][1]).toBe(true);
     });
   }
 
   // 4. Every domino appears in the output an equal number of times as the number of times it appears in the input.
   // (in other words, the dominoes in the output are the same dominoes as the ones in the input)
-  xit('Should have the same dominoes', () => {
+  it('Should have the same dominoes', () => {
     const sortDomino = (domino) => [...domino].sort();
     expect([...dominoes].map(sortDomino).sort()).toEqual(
       [...result].map(sortDomino).sort()
@@ -55,19 +55,20 @@ function runTestsExpectingChain(dominoes) {
 }
 
 describe('Dominoes', () => {
+  
   describe('empty input = empty output', () => {
     runTest([], true);
   });
-
+  
   describe('singleton input = singleton output', () => {
     runTest([[1, 1]], true);
   });
-
-  xdescribe("singleton that can't be chained", () => {
+  
+  describe("singleton that can't be chained", () => {
     runTest([[1, 2]], false);
   });
-
-  xdescribe('three elements', () => {
+  
+  describe('three elements', () => {
     runTest(
       [
         [1, 2],
@@ -77,8 +78,8 @@ describe('Dominoes', () => {
       true
     );
   });
-
-  xdescribe('can reverse dominoes', () => {
+  
+  describe('can reverse dominoes', () => {
     runTest(
       [
         [1, 2],
@@ -88,8 +89,8 @@ describe('Dominoes', () => {
       true
     );
   });
-
-  xdescribe("can't be chained", () => {
+  
+  describe("can't be chained", () => {
     runTest(
       [
         [1, 2],
@@ -100,7 +101,7 @@ describe('Dominoes', () => {
     );
   });
 
-  xdescribe('disconnected - simple', () => {
+  describe('disconnected - simple', () => {
     runTest(
       [
         [1, 1],
@@ -110,7 +111,7 @@ describe('Dominoes', () => {
     );
   });
 
-  xdescribe('disconnected - double loop', () => {
+  describe('disconnected - double loop', () => {
     runTest(
       [
         [1, 2],
@@ -122,7 +123,7 @@ describe('Dominoes', () => {
     );
   });
 
-  xdescribe('disconnected - single isolated', () => {
+  describe('disconnected - single isolated', () => {
     runTest(
       [
         [1, 2],
@@ -134,7 +135,7 @@ describe('Dominoes', () => {
     );
   });
 
-  xdescribe('need backtrack', () => {
+  describe('need backtrack', () => {
     runTest(
       [
         [1, 2],
@@ -146,8 +147,8 @@ describe('Dominoes', () => {
       true
     );
   });
-
-  xdescribe('separate loops', () => {
+  
+  describe('separate loops', () => {
     runTest(
       [
         [1, 2],
@@ -160,8 +161,8 @@ describe('Dominoes', () => {
       true
     );
   });
-
-  xdescribe('nine elements', () => {
+  
+  describe('nine elements', () => {
     runTest(
       [
         [1, 2],
@@ -177,4 +178,5 @@ describe('Dominoes', () => {
       true
     );
   });
+  
 });

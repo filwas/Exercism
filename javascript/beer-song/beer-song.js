@@ -33,5 +33,6 @@ export const recite = (initialBottlesCount, takeDownCount) => {
     verses.push("")
   }
   verses.pop();
+  console.log(verses);
   return verses
 };

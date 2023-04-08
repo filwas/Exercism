@@ -4,24 +4,32 @@
 //
 
 class CircularBuffer {
-  constructor() {
-    throw new Error('Remove this statement and implement this function');
+  constructor(size) {
+    this.size = size;
+    this.data = []
   }
 
-  write() {
-    throw new Error('Remove this statement and implement this function');
+
+  write(number) {
+    if (this.data.length >= this.size) {throw new BufferFullError()}
+    else {this.data.push(number)}
   }
 
   read() {
-    throw new Error('Remove this statement and implement this function');
+    if (this.data.length == 0) {throw new BufferEmptyError()}
+    else return this.data.shift().toString();
   }
 
-  forceWrite() {
-    throw new Error('Remove this statement and implement this function');
+  forceWrite(number) {
+    if (this.data.length < this.size) {this.write(number)}
+    else {
+      this.data.shift();
+      this.data.push(number);
+    }
   }
 
   clear() {
-    throw new Error('Remove this statement and implement this function');
+    this.data.pop();
   }
 }
 
@@ -29,12 +37,12 @@ export default CircularBuffer;
 
 export class BufferFullError extends Error {
   constructor() {
-    throw new Error('Remove this statement and implement this function');
+    super();
   }
 }
 
 export class BufferEmptyError extends Error {
   constructor() {
-    throw new Error('Remove this statement and implement this function');
+    super();
   }
 }

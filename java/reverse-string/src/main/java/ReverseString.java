@@ -9,7 +9,6 @@ class ReverseString {
         for (char c : charArr) {
             charLen--;
             retArr[charLen] = ""+c;
-            System.out.println(retArr[charLen]);
         }
         String retString = String.join("", retArr);
         return retString;

@@ -1,19 +1,47 @@
 public class Blackjack {
 
     public int parseCard(String card) {
-        throw new UnsupportedOperationException("Please implement the Blackjack.parseCard method");
+        int parsed;
+        switch (card) {
+            case "ace": parsed = 11; break;
+            case "two": parsed = 2; break;
+            case "three": parsed = 3; break;
+            case "four": parsed = 4; break;
+            case "five": parsed = 5; break;
+            case "six": parsed = 6; break;
+            case "seven": parsed = 7; break;
+            case "eight": parsed = 8; break;
+            case "nine": parsed = 9; break;
+            case "ten": parsed = 10; break;
+            case "jack": parsed = 10; break;
+            case "queen": parsed = 10; break;
+            case "king": parsed = 10; break;
+            default: parsed = 0; break;
+        }
+        return parsed;
     }
 
     public boolean isBlackjack(String card1, String card2) {
-        throw new UnsupportedOperationException("Please implement the Blackjack.isBlackjack method");
+        if (parseCard(card1) + parseCard(card2) == 21) {
+            return true;
+        } else return false;
     }
 
+
+    //myInfo: The exercise is tricky. It tells you what to do when you have a pair of aces, while also giving you a method that doesn't tell you
+    //        what cards you actually have. Good thing I noticed, that in this case largeHand() can only ever receive two numbers as it's first 
+    //        argument: 21 and 22. The first one is a blackjack, the second one can only happen if you have a pair of aces.
     public String largeHand(boolean isBlackjack, int dealerScore) {
-        throw new UnsupportedOperationException("Please implement the Blackjack.largeHand method");
+        if (isBlackjack == false) return "P";
+        else if (dealerScore < 10) return "W";
+        else return "S";
     }
 
     public String smallHand(int handScore, int dealerScore) {
-        throw new UnsupportedOperationException("Please implement the Blackjack.smallHand method");
+        if (handScore >= 17) return "S";
+        else if (handScore <= 11) return "H";
+        else if (dealerScore >= 7) return "H";
+        else return "S";
     }
 
     // FirstTurn returns the semi-optimal decision for the first turn, given the cards of the player and the dealer.
